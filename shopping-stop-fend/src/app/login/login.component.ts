@@ -36,7 +36,8 @@ export class LoginComponent {
       this.router.navigate(['customerpage']);
     }
     },(err)=>{
-      this.alert.error(err.error.msg);
+     this.alert.error(err.error.msg);
+     this.loading = false;
     });
   }
 
