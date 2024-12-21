@@ -1,4 +1,5 @@
-<!-- order history and activities -->
+<!-- Orders and Activities (Existing Content) -->
+
 <table>
   <thead>
   </thead>
@@ -9,7 +10,6 @@
     </tr>
   </tbody>
 </table>
-
 <div class="container mt-4">
   <h2>{{ user?.first_name }} {{ user?.last_name }} Orders</h2>
   <div *ngFor="let order of orderArr">
@@ -23,15 +23,15 @@
         <p class="card-text">
           {{ order?.address.full_name }}<br>
           {{ order?.address.address_line1 }}<br>
-          {{ order?.address.address_line2  }}
+          {{ order?.address.address_line2 }}
           {{ order?.address.city }}, {{ order?.address?.state }} - {{ order?.address?.pincode }}
         </p>
         <div *ngFor="let item of order.cart">
           <div class="d-flex mb-2">
             <img [src]="item?.orgProduct?.picUrl" alt="Product Image" class="img-thumbnail mr-2" width="50">
             <div>
-              <p>&nbsp;&nbsp;  {{ item?.orgProduct?.name }}</p>
-              <p>&nbsp;&nbsp;  Quantity: {{ item?.quantity }}</p>
+              <p>&nbsp;&nbsp; {{ item?.orgProduct?.name }}</p>
+              <p>&nbsp;&nbsp; Quantity: {{ item?.quantity }}</p>
             </div>
           </div>
         </div>
@@ -47,6 +47,43 @@
             <option value="Cancelled">Cancelled</option>
           </select>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div>
+  <button class="open-button" (click)="openForm()">
+    Chat
+  </button>
+  <div class="chat-popup shadow-lg" id="myForm">
+    <div class="form-container">
+      <!-- Chat Header -->
+      <div class="chat-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Chat with Admin</h5>
+        <button type="button" class="btn-close" (click)="closeForm()"></button>
+      </div>
+
+      <!-- Chat Messages -->
+      <div class="chat-messages">
+        <div *ngFor="let data of msgArr" class="message"
+          [ngClass]="{'me': data?.from == userEmail, 'admin': data?.from != userEmail}">
+          <span class="sender">{{ data?.from == userEmail ? 'Me' : this.user.email }}</span>
+          <p class="content">{{ data?.content }}</p>
+        </div>
+      </div>
+
+      <!-- Chat Input -->
+      <div class="chat-input">
+        <textarea (keyup.enter)="sendMessage(message)" placeholder="Type your message..." [(ngModel)]="message"
+          name="msg" required></textarea>
+        <button class="btn btn-success send-btn" (click)="sendMessage(message)">
+          Send
+        </button>
       </div>
     </div>
   </div>

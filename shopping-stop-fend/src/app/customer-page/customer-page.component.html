@@ -1,4 +1,38 @@
-<app-header></app-header> 
+<app-header></app-header>
 <div class="p-1">
     <router-outlet></router-outlet>
+
+    <!-- Chat Button -->
+    <button class="open-button" (click)="openForm()">
+         Chat
+    </button>
+
+    <!-- Chat Popup -->
+    <div class="chat-popup shadow-lg" id="myForm">
+        <div class="form-container">
+            <!-- Chat Header -->
+            <div class="chat-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Chat with Admin</h5>
+                <button type="button" class="btn-close" (click)="closeForm()"></button>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages">
+                <div *ngFor="let data of msgArr" class="message"
+                    [ngClass]="{'me': data?.from == userEmail, 'admin': data?.from != userEmail}">
+                    <span class="sender">{{ data?.from == userEmail ? 'Me' : 'Admin' }}</span>
+                    <p class="content">{{ data?.content }}</p>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input">
+                <textarea (keyup.enter)="sendMessage(message)" placeholder="Type your message..." [(ngModel)]="message"
+                    name="msg" required></textarea>
+                <button class="btn btn-success send-btn" (click)="sendMessage(message)">
+                    Send
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

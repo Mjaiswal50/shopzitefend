@@ -1,0 +1,130 @@
+
+// Floating Chat Button
+.open-button {
+  background-color: #1877f2;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #145dbf;
+  }
+
+  i {
+    font-size: 18px;
+  }
+}
+
+// Chat Popup
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  border-radius: 8px;
+  background: #fff;
+  z-index: 10;
+  overflow: hidden;
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+
+    // Chat Header
+    .chat-header {
+      background-color: #1877f2;
+      color: white;
+      padding: 10px 15px;
+      font-weight: bold;
+    }
+
+    // Chat Messages
+    .chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background-color: #f5f5f5;
+
+      .message {
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+
+        &.me {
+          align-items: flex-end;
+          .content {
+            background-color: #d1e7dd;
+            color: #155724;
+          }
+        }
+
+        &.admin {
+          align-items: flex-start;
+          .content {
+            background-color: #f8d7da;
+            color: #721c24;
+          }
+        }
+
+        .sender {
+          font-size: 12px;
+          color: #6c757d;
+        }
+
+        .content {
+          max-width: 80%;
+          padding: 8px 12px;
+          border-radius: 12px;
+        }
+      }
+    }
+
+    // Chat Input
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      background: #fff;
+
+      textarea {
+        flex: 1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px;
+        margin-right: 10px;
+        resize: none;
+        height: 40px;
+
+        &:focus {
+          outline: none;
+          border-color: #1877f2;
+        }
+      }
+
+      .send-btn {
+        border-radius: 5px;
+        padding: 8px 12px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #218838;
+        }
+      }
+    }
+  }
+}

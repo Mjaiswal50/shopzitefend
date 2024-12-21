@@ -3,26 +3,26 @@ export class AuthUtils {
   private static userType = 'user type';
 
   static getAuthToken() {
-    return localStorage.getItem(AuthUtils.authToken);
+    return sessionStorage.getItem(AuthUtils.authToken);
   }
 
   static setAuthToken(value:any) {
-    localStorage.setItem(AuthUtils.authToken, value);
+    sessionStorage.setItem(AuthUtils.authToken, value);
   }
 
   static removeAuthToken() {
-    localStorage.removeItem(AuthUtils.authToken);
+    sessionStorage.removeItem(AuthUtils.authToken);
   }
   
   static getUserType() {
-    return localStorage.getItem(AuthUtils.userType);
+    return sessionStorage.getItem(AuthUtils.userType);
   }
 
   static setUserType(value:any) {
-    localStorage.setItem(AuthUtils.userType, value);
+    sessionStorage.setItem(AuthUtils.userType, value);
   }
 
   static removeUserType() {
-    localStorage.removeItem(AuthUtils.userType);
+    sessionStorage.removeItem(AuthUtils.userType);
   }
 }
