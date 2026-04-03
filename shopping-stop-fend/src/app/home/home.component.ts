@@ -68,7 +68,6 @@ export class HomeComponent implements OnDestroy {
           }else{
             res['inCart'] = true;
             this.alert.success(data?.msg);
-            this.userService.addActivity(data?.msg).subscribe();
             let c= this.productService.cartCount.value+1;
             this.productService.cartCount.next(c);          }
         }
@@ -87,7 +86,6 @@ export class HomeComponent implements OnDestroy {
         return res;
       });
       this.alert.success(data?.msg);
-      this.userService.addActivity(data?.msg).subscribe();
     });
   }
 

@@ -53,7 +53,6 @@ export class SingleproductComponent implements OnInit {
     this.productService.addToWishlist(id).subscribe((data: any) => {
       this.product['inWishlist'] = data.isAdded;
       this.alert.success(data?.msg);
-      this.userService.addActivity(data?.msg).subscribe();
     });
   }
 }

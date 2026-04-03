@@ -20,7 +20,4 @@ export class UserMgmComponent {
   editUser(userId: any) {
     this.router.navigate(['adminpage','edit-user', userId]);
   }
-  activity(userId: any) {
-    this.router.navigate(['adminpage','activitypage', userId]);
-  }
 }

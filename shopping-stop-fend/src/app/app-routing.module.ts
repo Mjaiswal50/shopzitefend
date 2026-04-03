@@ -20,7 +20,6 @@ import { SignupComponent } from './signup/signup.component';
 import { SingleproductComponent } from './singleproduct/singleproduct.component';
 import { UserMgmComponent } from './user-mgm/user-mgm.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
-import { ActivitypageComponent } from './activitypage/activitypage.component';
 const routes: Routes = [
   {
     path: '', 
@@ -43,8 +42,7 @@ const routes: Routes = [
         { path: '', redirectTo: 'user-management', pathMatch: 'full' },
         { path: 'user-management', component: UserMgmComponent },
         { path: 'edit-user/:userId' , component: EdituserComponent},
-        { path: 'product-management', component: ProductMgmComponent },
-        { path: 'activitypage/:userId', component: ActivitypageComponent}
+        { path: 'product-management', component: ProductMgmComponent }
       ]},
       ]
   },

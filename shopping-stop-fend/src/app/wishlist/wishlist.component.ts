@@ -35,7 +35,6 @@ addToCart(id: any){
         }else{
           res['inCart'] = true;
           this.alert.success(data?.msg);
-          this.userService.addActivity(data?.msg).subscribe();
 
         }
       }
@@ -48,7 +47,6 @@ addToCart(id: any){
 addToWishlist(id : any){
   this.productService.addToWishlist(id).subscribe((data:any) => {
     this.alert.success(data?.msg);
-    this.userService.addActivity(data?.msg).subscribe();
     this.products=this.products.filter((res:any)=>{
         return (res._id!==id)
     })

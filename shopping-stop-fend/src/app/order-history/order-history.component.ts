@@ -17,7 +17,7 @@ export class OrderHistoryComponent implements OnInit {
 
   getOrderHistory(): void {
     this.productService.getOrderHistory().subscribe((data: any) => {
-      this.orders = data; 
+      this.orders = data.reverse(); 
       this.orders.map((res:any) =>{
         res["isopen"] = this.isopen;
       })

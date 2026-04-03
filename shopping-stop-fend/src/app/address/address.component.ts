@@ -41,7 +41,6 @@ export class AddressComponent implements OnInit {
       this.getAddress();
       this.alertService.success("Address added successfully");
       this.selectAddress(this.addArr[0])
-      this.userService.addActivity("Address added successfully").subscribe();
     })
   }
   
@@ -65,7 +64,6 @@ export class AddressComponent implements OnInit {
   saveEditedAddress(singleAdd:any){
     this.productService.editAddress(singleAdd).subscribe((data:any) =>{
       this.alertService.success("Address Updated successfully");
-      this.userService.addActivity("Address Updated successfully").subscribe();
       singleAdd.isEditMode=false;
     })
   }

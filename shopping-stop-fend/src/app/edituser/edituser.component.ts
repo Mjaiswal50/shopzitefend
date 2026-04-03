@@ -44,7 +44,7 @@ export class EdituserComponent implements OnDestroy{
       this.chatService.getChatHistory(this.userEmail, data.user.email).subscribe((data:any) =>{
         this.msgArr = data;
       })
-      this.orderArr = data.orderArr;
+      this.orderArr = data.orderArr.reverse();
     })
   }
 
@@ -63,7 +63,6 @@ export class EdituserComponent implements OnDestroy{
     }
     this.userService.updateOrderStatus(orderId, newStatus).subscribe((data:any) => {
       this.alertService.success(data?.msg);
-      this.userService.addActivity(data?.msg).subscribe();
       this.getUser();
     });
   }

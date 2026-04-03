@@ -18,8 +18,8 @@ export class LoginComponent {
   constructor( private http:HttpClient, private router: Router,private alert:AlertService,
     private userService: UserService) {
     this.loginForm = new FormGroup({
-      email: new FormControl("kp@gmail.com", [Validators.required, Validators.email]),
-      password: new FormControl("mj@gmail.com", [Validators.required])
+      email: new FormControl("", [Validators.required, Validators.email]),
+      password: new FormControl("", [Validators.required])
     });
   }
 
@@ -32,7 +32,6 @@ export class LoginComponent {
       this.loading = false;
       this.alert.success(data.msg);
       if(data.type == "customer")
-      this.userService.addActivity(data?.msg).subscribe();
       this.router.navigate(['customerpage']);
     }
     },(err)=>{
