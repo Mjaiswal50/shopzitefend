@@ -28,6 +28,9 @@ FROM nginx:alpine
 # Copy the built files from the build stage to the NGINX container
 COPY --from=build /app/dist/shopping-stop-fend /usr/share/nginx/html
 
+# Copy custom nginx config to fix SPA routing
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Expose the port NGINX is running on
 EXPOSE 80
 
