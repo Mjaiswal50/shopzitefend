@@ -31,8 +31,11 @@ export class LoginComponent {
       AuthUtils.setUserType(data.type)
       this.loading = false;
       this.alert.success(data.msg);
-      if(data.type == "customer")
-      this.router.navigate(['customerpage']);
+      if(data.type == "customer"){
+        this.router.navigate(['customerpage']);
+      }else{
+        this.router.navigate(['adminpage']);   
+      }
     }
     },(err)=>{
      this.alert.error(err.error.msg);
