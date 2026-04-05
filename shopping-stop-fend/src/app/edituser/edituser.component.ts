@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AlertService } from '../services/alert.service';
 import { UserService } from '../services/user.service';
 import { ChatService } from '../services/chat.service';
-import { Subscription } from 'rxjs';
+import { Subscription, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-edituser',
@@ -38,14 +38,27 @@ export class EdituserComponent implements OnDestroy{
     })
   }
   getUser() {
-    this.userService.getCustomerInfo(this.userId).subscribe((data: any) => {
-      console.log("user", data);
-      this.user = data.user;
-      this.chatService.getChatHistory(this.userEmail, data.user.email).subscribe((data:any) =>{
-        this.msgArr = data;
+    this.route.params.pipe(
+      switchMap((params: any) => {
+        this.userId = params['userId'];
+        console.log('###' + this.userId);
+        return this.userService.getCustomerInfo(this.userId);
+      }),
+      switchMap((data: any) => {
+        console.log('user', data);
+        this.user = data.user;
+        this.orderArr = data.orderArr?.reverse() || [];
+
+        return this.chatService.getChatHistory(this.userEmail, data.user.email);
       })
-      this.orderArr = data.orderArr.reverse();
-    })
+    ).subscribe({
+      next: (chatData: any) => {
+        this.msgArr = chatData;
+      },
+      error: (err) => {
+        console.error('Error fetching user data:', err);
+      }
+    });
   }
 
   openForm() {
